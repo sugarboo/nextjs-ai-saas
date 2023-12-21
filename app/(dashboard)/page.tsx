@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { tools } from "@/utils/constants";
+import { tools } from "@/constants";
 import { cn } from "@/lib/utils";
 
 import { ArrowRight } from "lucide-react";
