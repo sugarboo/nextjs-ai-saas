@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { Montserrat } from "next/font/google";
 
 import { cn } from "@/lib/utils";
@@ -55,18 +56,22 @@ const Sidebar = () => {
         <div className="px-3 py-2">
           <div className="flex justify-between items-center mb-14 pl-3">
             <div className="relative w-10 h-10 mr-4">
-              <Image
-                src="/logo.png"
-                alt="logo"
-                fill
-              />
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  alt="logo"
+                  fill
+                />
+              </Link>
             </div>
-            <h1 className={cn(
-              "hidden md:block text-3xl font-bold",
-              poppins.className
-            )}>
-              Genius
-            </h1>
+            <Link href="/">
+              <h1 className={cn(
+                "hidden md:block text-3xl font-bold",
+                poppins.className
+                )}>
+                Genius
+              </h1>
+            </Link>
           </div>
           <div className="space-y-1">
             {routes.map((route) => (
@@ -103,9 +108,11 @@ const Sidebar = () => {
         </div>
       </div>
       {user && (
-        <div className="w-full px-3 py-2">
-          <UserButton afterSignOutUrl="/sign-in" />
-          <span>{user?.fullName}</span>
+        <div className="flex items-center w-full px-3 py-2">
+          <div className="pr-2">
+            <UserButton afterSignOutUrl="/sign-in" />
+          </div>
+          <span>{user?.fullName || user.username}</span>
         </div>
       )}
     </div>
